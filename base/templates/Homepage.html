@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Homepage</title>
+{% endblock %}
+
+{% block content %}
+    <h1>My to-do list</h1>
+
+    <table>
+        <tr>
+            <th>Item</th>
+        </tr>
+        {%for tasks in obj %}
+        <tr>
+            <td>{{tasks}}</td>
+        </tr>
+        {% empty %}
+        <h3>No items in list</h3>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
