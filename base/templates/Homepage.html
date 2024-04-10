@@ -10,10 +10,12 @@
     <table>
         <tr>
             <th>Item</th>
+            <th></th>
         </tr>
-        {%for tasks in obj %}
+        {%for task in obj %}
         <tr>
-            <td>{{tasks}}</td>
+            <td>{{task.title}}</td>
+            <td><a href=/item/{{ task.id }} >view</a> </td>
         </tr>
         {% empty %}
         <h3>No items in list</h3>
