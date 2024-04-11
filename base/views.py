@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import tasklist
 from .forms import RawProductForm, Taskform
 
@@ -24,3 +24,15 @@ def task_create_view(request):
     "my_form" : my_form
     }
     return render(request, "create_view.html", context)
+
+def task_update_view(request, item_id):
+    instance = get_object_or_404(tasklist, pk=item_id)
+    print(instance)
+    if request.method == 'POST':
+        update_form = Taskform(request.POST, instance = instance)
+        if update_form.is_valid():
+            update_form.save()
+            return redirect('/')
+    else:
+        update_form =Taskform(instance=instance)
+    return render(request, "update_view.html", {'update_form': update_form})

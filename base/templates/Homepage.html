@@ -6,6 +6,7 @@
 
 {% block content %}
     <h1>My to-do list</h1>
+    <a href="{% url 'tasks_create' %}"> Create Task</a>
 
     <table>
         <tr>
@@ -15,7 +16,9 @@
         {%for task in obj %}
         <tr>
             <td>{{task.title}}</td>
-            <td><a href=/item/{{ task.id }} >view</a> </td>
+            <td><a href=/item/{{ task.id }} > view </a> </td>
+            <td><a href="{% url 'update_task' task.id %}" > edit </a> </td>
+            <td><a href="{% url 'update_task' task.id %}" > delete </a> </td>
         </tr>
         {% empty %}
         <h3>No items in list</h3>
