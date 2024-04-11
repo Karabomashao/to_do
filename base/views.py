@@ -36,3 +36,7 @@ def task_update_view(request, item_id):
     else:
         update_form =Taskform(instance=instance)
     return render(request, "update_view.html", {'update_form': update_form})
+
+def delete_task_views(request):
+
+    return render(request, "", )
