@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
 {% block title %}
+
     <title>Homepage</title>
 {% endblock %}
 
 {% block content %}
+    {% if request.user.is_authenticated %}
+        <p>{{request.user}}</p>
+        <a href="{% url 'logout' %}"> Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}"> Login</a>
+    {% endif %} 
+    <hr>
     <h1>My to-do list</h1>
     <a href="{% url 'tasks_create' %}"> Create Task</a>
 
